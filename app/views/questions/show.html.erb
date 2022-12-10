@@ -7,10 +7,10 @@
     <div class="mt">
       <%= link_to fa_icon('pencil'), edit_question_path(@question), title: 'Изменить вопрос' %>
       <%= button_to fa_icon('trash-o'), question_path(@question), method: :delete, title: 'Удалить вопрос', onclick: "return confirm('Точно удалить вопрос?')"%>
-      <% unless @question.hidden %>
+      <% if !@question.hidden %>
       <%= button_to fa_icon('eye-slash'), hide_question_path(@question), method: :put, title: 'Скрыть вопрос'%>
       <% else %>
-      <%= button_to fa_icon('eye'), unhide_question_path(@question), method: :put, title: 'Показать'%>
+      <%= button_to fa_icon('eye'), unhide_question_path(@question), method: :put, title: 'Показать вопрос'%>
       <% end %>
     </div>
 

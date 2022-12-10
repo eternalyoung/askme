@@ -33,14 +33,12 @@ class QuestionsController < ApplicationController
   end
 
   def hide
-    @question.hidden = true
-    @question.save
+    @question.update(hidden: true)
     redirect_to @question
   end
 
   def unhide
-    @question.hidden = false
-    @question.save
+    @question.update(hidden: false)
     redirect_to @question
   end
 
