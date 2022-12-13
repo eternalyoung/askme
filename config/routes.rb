@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     resource :session
     resources :questions do
       member do
-      put 'hide'
-      put 'unhide'
+      put :hide
+      put :unhide
     end
   end
 end
