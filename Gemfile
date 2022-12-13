@@ -12,6 +12,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "bootsnap", require: false
+gem 'bcrypt'
 
 group :development, :test do
   gem "rails", "~> 7.0.1"

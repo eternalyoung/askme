@@ -7,6 +7,10 @@ a, button {
   color: #DC2F02;
 }
 
+.semi-transparent {
+  opacity: 0.5;
+}
+
 .title-lg {
   font-size: 175%;
 }
@@ -23,6 +27,6 @@ a, button {
   font-size: 80%;
 }
 
-.semi-transparent {
-  opacity: 0.5;
+.text-bold {
+  font-weight: bold;
 }

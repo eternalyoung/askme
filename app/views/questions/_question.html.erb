@@ -1,0 +1,23 @@
+<div class="mb-sm <%='semi-transparent' if question.hidden%>">
+  <%= question.body %>
+</div>
+
+<div class="text-sm question-footer">
+  <div class="text-grey">
+    <%= l(question.created_at, format: :short) %>
+  </div>
+
+  <div>
+    <%= link_to fa_icon('pencil'), edit_question_path(question),
+      title: 'Изменить вопрос' %>
+    <% if question.hidden %>
+      <%= button_to fa_icon('eye'), unhide_question_path(question), 
+      method: :put, title: 'Скрыть вопрос'%>
+    <% else %>
+      <%= button_to fa_icon('eye-slash'), hide_question_path(question), 
+      method: :put, title: 'Показать вопрос'%>
+    <% end %>
+    <%= button_to fa_icon('trash-o'), question_path(question),
+      method: :delete, title: 'Удалить вопрос', onclick: "return confirm('Точно удалить вопрос?')" %>
+  </div>
+</div>
