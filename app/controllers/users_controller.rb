@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.find(params[:id])
+    @user.destroy
+
+    session.destroy(:user_id)
+
+    redirect_to root_path, notice: 'Пользователь удалён'
+  end
+
   private
 
   def user_params

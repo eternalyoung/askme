@@ -15,7 +15,7 @@
   </h2>
 </div>
 
-<% @questions.sort_by{ |questions| questions.hidden ? 1 : 0}.each do |question| %>
+<% @questions.sort_by{ |questions| questions.created_at }.reverse.each do |question| %>
   <div class="mt-sm container">
     <%= render question %>
   </div>
