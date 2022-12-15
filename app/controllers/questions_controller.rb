@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
 
     if @question.save
-      redirect_to question_path(@question), notice: 'Новый вопрос создан!'
+      redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       flash.now[:alert] = 'Ошибка при создании вопроса'
       render :new
@@ -15,13 +15,14 @@ class QuestionsController < ApplicationController
   def update
     @question.update(question_params)
 
-    redirect_to question_path(@question), notice: 'Новый вопрос создан!'
+    redirect_to user_path(@question.user), notice: 'Вопрос изменён!'
   end
 
   def destroy
+    @user = @question.user
     @question.destroy
 
-    redirect_to questions_path, notice: 'Вопрос удалён!'
+    redirect_to user_path(@user), notice: 'Вопрос удалён!'
   end
 
   def show
@@ -33,7 +34,8 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    @user = User.find(params[:user_id])
+    @question = Question.new(user: @user)
   end
 
   def edit

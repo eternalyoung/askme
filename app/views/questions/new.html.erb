@@ -1,6 +1,6 @@
 <div class="container">
-  <h2 class="title-lg mb">Новый вопрос</h2>
-
+  <h2 class="title-lg mb-sm">Новый вопрос</h2>
+  <p class="mb">для <%= link_to strudel(@user.nickname), user_path(@user)%></p>
 
   <% if @question.errors.any? %>
     <div class="mt">
