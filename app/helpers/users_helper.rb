@@ -1,5 +1,5 @@
 module UsersHelper
-  def strudel(nickname)
+  def atmark(nickname)
     "@#{nickname}"
   end
 end

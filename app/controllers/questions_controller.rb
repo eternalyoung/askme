@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.new
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc)
   end
 
   def new
