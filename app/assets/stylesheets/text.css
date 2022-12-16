@@ -35,6 +35,10 @@ a, button {
   color: #d00000;
 }
 
+.text-dark-red {
+  color: darkred;
+}
+
 .text-sm {
   font-size: 80%;
 }

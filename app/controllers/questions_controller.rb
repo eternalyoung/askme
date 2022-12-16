@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy edit hide unhide]
 
   def create
+    question_params = params.require(:question).permit(:body, :user_id, :answer)
     @question = Question.new(question_params)
 
     if @question.save
@@ -14,6 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    question_params = params.require(:question).permit(:body, :user_id, :answer)
     @question.update(question_params)
 
     redirect_to user_path(@question.user), notice: 'Вопрос изменён!'
@@ -45,19 +47,15 @@ class QuestionsController < ApplicationController
 
   def hide
     @question.update(hidden: true)
-    redirect_to root_path
+    redirect_to user_path(@question.user), notice: 'Вопрос скрыт'
   end
 
   def unhide
     @question.update(hidden: false)
-    redirect_to root_path
+    redirect_to user_path(@question.user), notice: 'Вопрос больше не скрыт'
   end
 
   private
-
-  def question_params
-    params.require(:question).permit(:body, :user_id)
-  end
 
   def ensure_current_user
     redirect_with_alert unless current_user.present?
