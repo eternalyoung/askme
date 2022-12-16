@@ -46,3 +46,11 @@ a, button {
 .text-bold {
   font-weight: bold;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.deg30 {
+  transform: rotate(30deg);
+}
