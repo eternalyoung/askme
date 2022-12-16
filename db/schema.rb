@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_12_16_070958) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
-    t.string "header_color"
+    t.string "header_color", default: "#370617"
     t.index ["email"], name: "index_users_on_email"
   end
 
