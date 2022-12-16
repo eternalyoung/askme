@@ -3,14 +3,12 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy edit hide unhide]
 
   def create
-    question_params = params.require(:question).permit(:body, :user_id, :answer)
+    question_params = params.require(:question).permit(:body, :user_id)
     @question = Question.new(question_params)
-
     if @question.save
       redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
-      flash.now[:alert] = 'Ошибка при создании вопроса'
-      render :new
+      redirect_to user_path(@question.user), notice: 'Ошибка при создании вопроса!'
     end
   end
 
