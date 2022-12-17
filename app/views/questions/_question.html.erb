@@ -11,8 +11,11 @@
 <div class="text-sm question-footer">
   <div class="text-grey">
     <%= l(question.created_at, format: :short) %>
+    <% if question.asker.present? %>
+    <span>от: <%= link_to atmark(question.asker.nickname), user_path(question.asker)%></span>
+    <% end %>
   </div>
-
+  
   <% if current_user == question.user %>
     <div>
       <% edit_icon = (question.answer.present? ? 'pencil' : 'reply')%>
