@@ -12,7 +12,9 @@
   <div class="text-grey">
     <%= l(question.created_at, format: :short) %>
     <% if question.asker.present? %>
-    <span>от: <%= link_to atmark(question.asker.nickname), user_path(question.asker)%></span>
+    <span>от <%= link_to atmark(question.asker.nickname), user_path(question.asker)%></span>
+    <% else %>
+    <span>от анонима</span>
     <% end %>
   </div>
   
