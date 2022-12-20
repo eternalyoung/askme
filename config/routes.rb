@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'questions#index'
 
   resource :session, only: %i[new create destroy]
-  resources :users, except: %i[index]
+  resources :users, except: %i[index], param: :nickname
 
   resources :questions do
     member do

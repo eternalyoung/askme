@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_with_alert
-    riderect_to root_path, alert: 'Вам сюда нельзя!'
+    redirect_to root_path, alert: 'Вам сюда нельзя!'
   end
 end
