@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_16_144718) do
+ActiveRecord::Schema.define(version: 2023_01_02_132436) do
 
   create_table "questions", force: :cascade do |t|
     t.text "body"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 2022_12_16_144718) do
     t.string "answer"
     t.integer "asker_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "questions_tags", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_questions_tags_on_question_id"
+    t.index ["tag_id"], name: "index_questions_tags_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +49,6 @@ ActiveRecord::Schema.define(version: 2022_12_16_144718) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "questions_tags", "questions"
+  add_foreign_key "questions_tags", "tags"
 end
