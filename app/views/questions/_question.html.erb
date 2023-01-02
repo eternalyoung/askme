@@ -1,10 +1,10 @@
 <div class="mb-sm <%='semi-transparent' if question.hidden%>">
-  <%= simple_format h(question.body) %>
+  <%= simple_format h(render_with_hashtags(question.body)) %>
 </div>
 
 <% if question.answer.present? %>
   <div class="mb-sm text-dark-red <%='semi-transparent' if question.hidden%>">
-    <%= simple_format h(question.answer) %>
+    <%= simple_format h(render_with_hashtags(question.answer)) %>
   </div>
 <% end %>
 

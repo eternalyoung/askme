@@ -12,6 +12,18 @@
 
 <div class="container mt-sm">
   <h2 class="title-lg">
+    <%= inclination(@tags.count, 'Последний', 'Последние', 'Последние') %>
+    <%= @tags.count %>
+    <%= inclination(@tags.count, 'хештего', 'хештега', 'хештегов') %>
+  </h2>
+  <p class="mt-sm">
+    <% @tags.each do |tag| %>
+      <%= render 'tags/tag', tag: tag%>
+    <% end %>
+  </p>
+</div>
+<div class="container mt-sm">
+  <h2 class="title-lg">
     <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
     <%= @questions.count %>
     <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
