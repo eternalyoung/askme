@@ -14,7 +14,7 @@
   <h2 class="title-lg">
     <%= inclination(@tags.count, 'Последний', 'Последние', 'Последние') %>
     <%= @tags.count %>
-    <%= inclination(@tags.count, 'хештего', 'хештега', 'хештегов') %>
+    <%= inclination(@tags.count, 'хештег', 'хештега', 'хештегов') %>
   </h2>
   <p class="mt-sm">
     <% @tags.each do |tag| %>
