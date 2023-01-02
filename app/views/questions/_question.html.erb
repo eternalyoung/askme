@@ -1,3 +1,8 @@
+<p class="mb text-sm text-grey">
+Вопрос <%= link_to "##{question.id}", question_path(question) %>
+для юзера <%= link_to "@#{question.user.nickname}", user_path(question.user) %>
+</p>
+
 <div class="mb-sm <%='semi-transparent' if question.hidden%>">
   <%= simple_format h(render_with_hashtags(question.body)) %>
 </div>
