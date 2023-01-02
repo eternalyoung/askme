@@ -33,9 +33,9 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.new
-    @questions = Question.order(created_at: :desc).last(10)
-    @tags = Tag.order(created_at: :desc).last(50)
-    @users = User.order(created_at: :desc).last(10)
+    @questions = Question.order(created_at: :desc).limit(10)
+    @tags = Tag.order(created_at: :desc).limit(50)
+    @users = User.order(created_at: :desc).limit(10)
   end
 
   def new
