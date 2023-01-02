@@ -15,7 +15,7 @@ class Question < ApplicationRecord
     hashtags = body.scan(/#[\p{L}\d]+/)
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
-      tags << (tag)
+      tags.push(tag) unless tags.include?(tag)
     end
   end
 
