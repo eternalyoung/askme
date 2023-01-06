@@ -12,7 +12,7 @@ class Question < ApplicationRecord
 
   def fetch_tags
     hashtags = body.scan(/#[\p{L}\d]+/)
-    hashtags.uniq.each do |hashtag|
+    hashtags.each do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
       tags.push(tag) unless tags.include?(tag)
     end
