@@ -11,10 +11,10 @@ class Question < ApplicationRecord
   before_update :clear_tags
 
   def fetch_tags
-    hashtags = body.scan(/#[\p{L}\d]+/)
-    hashtags.each do |hashtag|
-      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
-      tags.push(tag) unless tags.include?(tag)
+    hashtags = body.downcase.scan(/#[\p{L}\d]+/)
+    hashtags.uniq.each do |hashtag|
+      tag = Tag.find_or_create_by(name: hashtag.delete('#'))
+      tags.push(tag)
     end
   end
 
