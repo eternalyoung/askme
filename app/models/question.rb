@@ -7,11 +7,10 @@ class Question < ApplicationRecord
   has_many :questions_tags
   has_many :tags, through: :questions_tags
 
-  after_create :tags_analyzer
-  before_update :tags_clear
-  before_update :tags_analyzer
+  after_save :fetch_tags
+  before_update :clear_tags
 
-  def tags_analyzer
+  def fetch_tags
     hashtags = body.scan(/#[\p{L}\d]+/)
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
@@ -19,7 +18,7 @@ class Question < ApplicationRecord
     end
   end
 
-  def tags_clear
+  def clear_tags
     tags.clear
   end
 end
